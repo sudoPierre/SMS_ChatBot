@@ -1,0 +1,36 @@
+2025-03-11 10:57:46.777720 - Success : Successful exchange with +33665123456
+2025-03-11 10:57:46.770051 - History : History of +33665123456 edited
+2025-03-11 10:57:46.756323 - History : History of +33665123456 edited
+2025-03-11 10:51:04.296892 - Success : Successful exchange with +33665123456
+2025-03-11 10:51:04.289455 - History : History of +33665123456 edited
+2025-03-11 10:51:04.281051 - History : History of +33665123456 edited
+2025-03-11 10:49:21.813988 - Success : Successful exchange with +33665123456
+2025-03-11 10:49:21.806223 - History : History of +33665123456 edited
+2025-03-11 10:49:21.798323 - History : History of +33665123456 edited
+2025-03-11 10:48:15.528983 - Success : Successful exchange with +33665123456
+2025-03-11 10:48:15.521213 - History : History of +33665123456 edited
+2025-03-11 10:48:15.510483 - History : History of +33665123456 edited
+2025-03-11 10:47:19.776247 - Success : Successful exchange with +33665123456
+2025-03-11 10:47:19.768221 - History : History of +33665123456 edited
+2025-03-11 10:47:19.760430 - History : History of +33665123456 edited
+2025-03-11 10:47:17.006352 - History : History of +33665123456 created
+2025-03-11 10:28:07.668586 - Success : Successful exchange with +33665123456
+2025-03-11 10:28:07.659636 - History : History of +33665123456 edited
+2025-03-11 10:28:07.650009 - History : History of +33665123456 edited
+2025-03-11 10:27:44.161537 - Success : Successful exchange with +33665123456
+2025-03-11 10:27:44.152558 - History : History of +33665123456 edited
+2025-03-11 10:27:44.144647 - History : History of +33665123456 edited
+2025-03-11 10:27:42.911926 - History : History of +33665123456 created
+2025-03-11 10:26:24.523581 - Exit : User exited the program.
+2025-03-11 09:49:44.126973 - Success : Successful exchange with +33665123456
+2025-03-11 09:49:44.119679 - History : History of +33665123456 edited
+2025-03-11 09:49:44.112281 - History : History of +33665123456 edited
+2025-03-11 09:49:11.891104 - Success : Successful exchange with +33665123456
+2025-03-11 09:49:11.884664 - History : History of +33665123456 edited
+2025-03-11 09:49:11.878031 - History : History of +33665123456 edited
+2025-03-10 17:08:05.836943 - Exit : User exited the program
+2025-03-10 16:43:26.968261 - Success : Successful exchange with +33665123456
+2025-03-10 16:43:26.961561 - History : History of +33665123456 edited
+2025-03-10 16:43:26.952643 - History : History of +33665123456 edited
+2025-03-10 16:42:11.917991 - Unauthorized : The unauthorized number +33665123451 tried to chat
+

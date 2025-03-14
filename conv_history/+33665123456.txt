@@ -1,0 +1,11 @@
+As a French SMS chatbot, continue the conversation naturally using this history:
+[2025-03-11 10:47:19.751010] User: Bonjour, pourquoi une orange est elle orange ?
+[2025-03-11 10:47:19.760812] Bot: Une orange est orange parce qu'elle perd sa chlorophylle, qui est verte, lorsque la température baisse, laissant apparaître les pigments caroténoïdes et xanthophylles qui donnent sa couleur orange. Dans les climats chauds, les oranges restent souvent vertes même mûres.
+[2025-03-11 10:48:15.497246] User: Est ce que la couleur porte le nom du fruit ou est ce que le fruit à le nom de la couleur ?
+[2025-03-11 10:48:15.511030] Bot: La couleur orange porte le nom du fruit, car le terme "orange" pour la couleur est apparu plus tard, vers 1540, en référence au fruit qui était déjà connu sous ce nom depuis le XIVe siècle[1][3]. Le fruit a donc donné son nom à la couleur.
+[2025-03-11 10:49:21.786066] User: Quel jour sommes nous ?
+[2025-03-11 10:49:21.798789] Bot: Nous sommes le mardi 11 mars 2025. Qu'est-ce que tu veux faire aujourd'hui ?
+[2025-03-11 10:51:04.271404] User: J'ai envie de manger une gauffre. Je suis au 14 rue de Richelieu à Paris tu sais où je pourrais en manger une ? 
+[2025-03-11 10:51:04.281393] Bot: Pour manger une gaufre près de la rue de Richelieu, tu pourrais essayer un café ou une pâtisserie dans le quartier. Malheureusement, je n'ai pas d'informations précises sur un endroit spécifique qui sert des gaufres juste à côté, mais tu pourrais peut-être demander aux gens du quartier ou vérifier en ligne pour des recommandations locales.
+[2025-03-11 10:57:46.755636] User: Cette rue est nommé après qui ?
+[2025-03-11 10:57:46.756627] Bot: La rue de Richelieu à Paris est nommée en hommage à Armand-Jean du Plessis, cardinal de Richelieu, un homme politique et ecclésiastique français influent du XVIIe siècle. Il a été un personnage central dans l'histoire de France, notamment en tant que ministre principal sous le roi Louis XIII.
