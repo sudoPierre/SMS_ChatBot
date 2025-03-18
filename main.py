@@ -5,11 +5,11 @@ import datetime
 
 API_KEY = PERPLEXITY_API_KEY
 client = OpenAI(api_key=API_KEY, base_url="https://api.perplexity.ai")
-""" ser = serial.Serial(
+ser = serial.Serial(
     port='/dev/serial0',
     baudrate=9600,
     timeout=1
-) """
+)
 path = os.path.dirname(os.path.abspath(__file__))
 _done = False
 
