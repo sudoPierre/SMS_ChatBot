@@ -43,3 +43,8 @@ This project is a Python-based chatbot running on a Raspberry Pi, allowing commu
 - Verify your SIM card supports 2G and is activated.  
 - Check `log.txt` for errors.  
 
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Author
+sudoPierre
