@@ -3,7 +3,7 @@ import os.path
 import serial
 import datetime
 
-API_KEY = "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"
+API_KEY = PERPLEXITY_API_KEY
 client = OpenAI(api_key=API_KEY, base_url="https://api.perplexity.ai")
 """ ser = serial.Serial(
     port='/dev/serial0',
