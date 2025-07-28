@@ -3,10 +3,14 @@ import os.path
 import datetime
 from dotenv import load_dotenv
 import json
+import requests
+from flask import Flask, request, abort, jsonify
 
 # Load environment variables
 load_dotenv()
 API_KEY = os.getenv("LLM_API_KEY")
+SMS_API_KEY = os.getenv("SMS_API_KEY")
+SMS_DEVICE_ID = os.getenv("SMS_DEVICE_ID")
 
 # Load configuration from config.json
 config_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'config.json')
@@ -23,13 +27,16 @@ client = OpenAI(api_key=API_KEY, base_url=base_url)
 path = os.path.dirname(os.path.abspath(__file__))
 _done = False
 
+app = Flask(__name__)
+sms_base_url = 'https://api.textbee.dev/api/v1'
+
 # Ensure the conversation history directory exists
 history_dir = os.path.join(path, "conv_history")
 if not os.path.exists(history_dir):
     os.makedirs(history_dir)
 
 # Function to create a log entry
-def log_entry(status, content):
+def logger(status, content):
     completePath = os.path.join(path, "main.log")
     with open(completePath, "r") as file:
         currentContent = file.read()
@@ -95,20 +102,32 @@ def ask_ai(number, message):
     return completion.choices[0].message
 
 # Function to send an SMS
-def sens_sms(number, message):
-    print(f"Sending message to {number} : {message}")
+def send_sms(number, message):
+    try:
+        response = requests.post(
+            f'{sms_base_url}/gateway/devices/{SMS_DEVICE_ID}/send-sms',
+            json={
+                'recipients': [number],
+                'message': message
+            },
+            headers={'x-api-key': SMS_API_KEY}
+        )
+        logger("SMS Sent", f"Message to {number}: {message}")
+    except requests.RequestException as e:
+        logger("SMS Error", f"Failed to send message to {number}: {str(e)}")
+        return {"error": str(e)}
 
 # Function to read the SMS
 def read_sms(data):
     pass
 
-while not _done :
+""" while not _done :
     number = input("What is the number ? : ")
     message = input("What is the message ? : ")
 
     # close the program if the user types "exit"
     if message == "exit" :
-        log_entry("Exit", "User exited the program.")
+        logger("Exit", "User exited the program.")
         break
 
     # check if the number is authorized to chat
@@ -116,9 +135,29 @@ while not _done :
         response = ask_ai(number, message).content
         edit_history(number, datetime.datetime.now(), "user", message)
         edit_history(number, datetime.datetime.now(), "assistant", response)
-        log_entry("Success", f"Successful exchange with {number}")
-        sens_sms(number, response)
+        logger("Success", f"Successful exchange with {number}")
+        send_sms(number, response)
     # if the number is not authorized, send a message to the user
     else:
-        sens_sms(number, "You are not authorized to chat with this number")
-        log_entry("Unauthorized", f"The unauthorized number {number} tried to join this service.")
+        logger("Unauthorized", f"The unauthorized number {number} tried to join this service.") """
+
+@app.route('/webhook', methods=['POST'])
+def webhook():
+    payload = request.json
+    print(f"Received payload: {payload}")
+    number = payload.get('sender')
+    message = payload.get('message')
+    # check if the number is authorized to chat
+    if check_auth(number):
+        response = ask_ai(number, message).content
+        edit_history(number, datetime.datetime.now(), "user", message)
+        edit_history(number, datetime.datetime.now(), "assistant", response)
+        logger("Success", f"Successful exchange with {number}")
+        send_sms(number, response)
+    # if the number is not authorized, send a message to the user
+    else:
+        logger("Unauthorized", f"The unauthorized number {number} tried to join this service.")
+    return jsonify({'status': 'received'}), 200
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=432)
