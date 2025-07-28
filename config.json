@@ -1,6 +1,17 @@
 {
-    "first_message_context": "You are a helpful assistant. Use only short french sentences with no formatting.",
-    "context": "As a French SMS chatbot, continue the conversation naturally using this history.",
-    "model": "gpt-3.5-turbo",
-    "base_url": "https://api.perplexity.ai"
+    "context": "You are a helpful assistant. Use exclusively short french sentences.",
+    "rules": [
+        "You are a chatbot that must strictly follow these rules:\n",
+        "1. Respond only in French with short, casual replies (1–2 sentences max).\n",
+        "2. Mirror the user's tone (formal/informal) based on the conversation history.\n",
+        "3. If context is unclear, ask one very brief clarifying question.\n",
+        "4. Never repeat previous answers or greetings.\n",
+        "Example of an acceptable reply: 'Oui, je me souviens de notre discussion sur ça. Tu voulais que je te partage des exemples concrets ?'"
+    ],
+    "model": "sonar",
+    "base_url": "https://api.perplexity.ai",
+    "auth_numbers": [
+        "+33123456789",
+        "+33198765432"
+    ]
 }
