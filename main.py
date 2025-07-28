@@ -23,6 +23,11 @@ client = OpenAI(api_key=API_KEY, base_url=base_url)
 path = os.path.dirname(os.path.abspath(__file__))
 _done = False
 
+# Ensure the conversation history directory exists
+history_dir = os.path.join(path, "conv_history")
+if not os.path.exists(history_dir):
+    os.makedirs(history_dir)
+
 # Function to create a log entry
 def log_entry(status, content):
     completePath = os.path.join(path, "main.log")
