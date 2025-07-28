@@ -1,15 +1,23 @@
 from openai import OpenAI
 import os.path
-import serial
 import datetime
+from dotenv import load_dotenv
+import json
 
-API_KEY = PERPLEXITY_API_KEY
+# Load environment variables
+load_dotenv()
+API_KEY = os.getenv("LLM_API_KEY")
+
+# Load configuration from config.json
+config_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'config.json')
+with open(config_path, 'r') as config_file:
+    config = json.load(config_file)
+first_message_context = config["first_message_context"]
+context = config["context"]
+model = config["model"]
+
+# Initialize the AI client
 client = OpenAI(api_key=API_KEY, base_url="https://api.perplexity.ai")
-ser = serial.Serial(
-    port='/dev/serial0',
-    baudrate=9600,
-    timeout=1
-)
 path = os.path.dirname(os.path.abspath(__file__))
 _done = False
 
@@ -78,36 +86,9 @@ def ask_ai(number, message):
 def sens_sms(number, message):
     print(f"Sending message to {number} : {message}")
 
-# Function to parse the SMS
-def sms_parser(data):
-    messages = []
-    lignes = data.split('\r\n')
-    for ligne in lignes:
-        if '+CMGL:' in ligne:
-            infos = ligne.split(',')
-            numero = infos[2].strip('"')
-            contenu = lignes[lignes.index(ligne)+1]
-            messages.append({
-                'numero': numero,
-                'contenu': contenu
-            })
-    return messages
-
 # Function to read the SMS
 def read_sms(data):
-    """ try:
-        ser.write(b'AT+CMGF=1\r\n')
-        time.sleep(1)
-        
-        ser.write(b'AT+CMGL="REC UNREAD"\r\n')
-        time.sleep(2)
-        
-        reponse = ser.read(ser.in_waiting()).decode()
-        return sms_parser(reponse)
-    
-    except Exception as e:
-        print(f"Erreur : {str(e)}")
-        return [] """
+    pass
 
 while not _done :
     number = input("What is the number ? : ")

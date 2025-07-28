@@ -1,4 +1,6 @@
 {
     "first_message_context": "You are a helpful assistant. Use only short french sentences with no formatting.",
-    "context": "As a French SMS chatbot, continue the conversation naturally using this history."
+    "context": "As a French SMS chatbot, continue the conversation naturally using this history.",
+    "model": "gpt-3.5-turbo",
+    "base_url": "https://api.perplexity.ai"
 }
