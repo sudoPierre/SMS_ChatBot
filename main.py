@@ -51,7 +51,7 @@ def edit_history(number, date, role, message):
     completePath = os.path.join(path, "conv_history/", f"{number}.json")
     entry = {
         "role": role,
-        "content": f" [{date.strftime("%Y-%m-%d %H:%M:%S")}] {message}"
+        "content": f" [{date.strftime('%Y-%m-%d %H:%M:%S')}] {message}"
     }
     if os.path.isfile(completePath):
         with open(completePath, "r") as file:
