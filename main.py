@@ -27,7 +27,10 @@ client = OpenAI(api_key=API_KEY, base_url=base_url)
 path = os.path.dirname(os.path.abspath(__file__))
 _done = False
 
+# Initialize Flask app
 app = Flask(__name__)
+
+# Base URL for SMS API
 sms_base_url = 'https://api.textbee.dev/api/v1'
 
 # Ensure the conversation history directory exists
@@ -120,26 +123,6 @@ def send_sms(number, message):
 # Function to read the SMS
 def read_sms(data):
     pass
-
-""" while not _done :
-    number = input("What is the number ? : ")
-    message = input("What is the message ? : ")
-
-    # close the program if the user types "exit"
-    if message == "exit" :
-        logger("Exit", "User exited the program.")
-        break
-
-    # check if the number is authorized to chat
-    if check_auth(number):
-        response = ask_ai(number, message).content
-        edit_history(number, datetime.datetime.now(), "user", message)
-        edit_history(number, datetime.datetime.now(), "assistant", response)
-        logger("Success", f"Successful exchange with {number}")
-        send_sms(number, response)
-    # if the number is not authorized, send a message to the user
-    else:
-        logger("Unauthorized", f"The unauthorized number {number} tried to join this service.") """
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
