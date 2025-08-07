@@ -20,7 +20,7 @@ context = config["context"]
 model = config["model"]
 base_url = config["base_url"]
 rules = "\n".join(config["rules"])
-auth_numbers = config["auth_numbers"]
+whitelist = config["whitelist"]
 
 # Initialize the AI client
 client = OpenAI(api_key=API_KEY, base_url=base_url)
@@ -75,7 +75,7 @@ def get_history(number):
 
 # Function to check if a number is authorized to chat
 def check_auth(number):
-    for auth_number in auth_numbers:
+    for auth_number in whitelist:
         if number == auth_number:
             return True
     return False

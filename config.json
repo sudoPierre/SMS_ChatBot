@@ -12,7 +12,7 @@
     ],
     "model": "sonar",
     "base_url": "https://api.perplexity.ai",
-    "auth_numbers": [
+    "whitelist": [
         "+33665123456",
         "+33198765432"
     ]
