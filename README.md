@@ -1,50 +1,66 @@
-# Raspberry Pi AI Chatbot via SIM800L  
+# SMS ChatBot (Powered by TextBee.dev)
 
-## Description  
-This project is a Python-based chatbot running on a Raspberry Pi, allowing communication with an AI (Perplexity) via SMS using a SIM800L module. It maintains conversation history for a fluid user experience and includes an authorization system to restrict access to approved contacts. A logging system is also implemented to facilitate debugging.  
+A Python-based SMS chatbot that leverages the [TextBee.dev](https://textbee.dev) SMS Gateway and its webhook feature to receive and respond to SMS messages using Perplexity AI. The bot supports message history, sender whitelisting, and logging.
 
-⚠ **Note:** This is a prototype and may not always work as expected. Additionally, it operates on the 2G network, which is being phased out in some countries.  
+This project is now fully cloud-based — no need for GSM hardware or Raspberry Pi.
 
-## Features  
-- **AI Communication:** Uses Perplexity AI to generate responses.  
-- **Conversation History:** Stored in the `conv_history` folder for continuous interaction.  
-- **Authorized Contacts:** Only numbers listed in `authContacts.csv` can interact with the chatbot.  
-- **Logging System:** `log.txt` records interactions and errors for debugging.  
+---
 
-## Requirements  
-- Raspberry Pi (tested on Raspberry Pi 3 Model B)  
-- SIM800L module  
-- Minicom installed (`sudo apt install minicom`)  
-- Python 3.x  
-- A working 2G SIM card  
+## Features
 
-## Installation & Setup  
-1. **Connect the SIM800L module** to your Raspberry Pi properly. Follow this tutorial for wiring and configuration:  
-   [SIM800L Raspberry Pi Setup Guide](https://howtoraspberrypi.com/sim800l-gsm-gps-raspberry-2/)  
-2. **Install dependencies:**  
-   ```bash
-   pip install openai pyserial
-   ```  
-3. **Set up the API key:**  
-   - Replace `API_KEY = PERPLEXITY_API_KEY` in `main.py` with your Perplexity API key.  
-4. **Run the script:**  
-   ```bash
-   python main.py
-   ```  
+- ⚡️ Instantly responds to incoming SMS messages via webhook
+- 💬 Supports message history per sender for contextual responses
+- ✅ Sender whitelist (only authorized numbers can interact with the bot)
+- 🧠 Uses Perplexity AI to generate intelligent replies
+- 📝 Simple logging system to monitor activity
+- 🛠️ Easy to configure and run with a `.env` file
 
-## How It Works  
-1. The script checks if an incoming SMS is from an authorized contact.  
-2. If authorized, the message is sent to Perplexity AI, using conversation history for context.  
-3. The AI's response is logged and sent back via SMS.  
-4. If unauthorized, the user receives a rejection message.  
+---
 
-## Troubleshooting  
-- Ensure the SIM800L module is correctly connected and powered.  
-- Verify your SIM card supports 2G and is activated.  
-- Check `log.txt` for errors.  
+## Warning
+
+This project is a **prototype** and should not be used in production without proper security and validation measures.
+
+**Note:** The previous version using the SIM800L module and Raspberry Pi has been deprecated in favor of the [TextBee.dev](https://textbee.dev) SMS Gateway.
+
+---
+
+## How It Works
+
+1. A user sends an SMS to your TextBee number.
+2. TextBee forwards the message to your hosted webhook.
+3. The webhook receives and processes the SMS.
+4. The chatbot queries Perplexity AI and generates a response.
+5. The response is sent back to the user via TextBee.
+
+---
+
+## Logs
+
+The bot logs the following information:
+- Incoming phone numbers and messages
+- Timestamps of interactions
+- AI responses
+
+All logs are stored in the local `logs/` directory (one file per session or day depending on configuration).
+
+---
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Author
-sudoPierre
+This project is released under the MIT License.  
+You are free to use, modify, and distribute it.
+
+---
+
+## Disclaimer
+
+Use this tool responsibly. SMS costs may apply depending on your TextBee plan. Make sure to comply with privacy laws and obtain consent before storing or processing users' phone numbers and messages.
+
+---
+
+## Links
+
+- [TextBee.dev](https://textbee.dev) – SMS Gateway provider
+- [Perplexity.ai](https://www.perplexity.ai/) – AI answering engine
+- [Project Repository](https://github.com/sudoPierre/SMS_ChatBot)
